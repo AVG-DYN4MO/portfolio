@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed&family=Raleway&family=Ubuntu&display=swap"
+    rel="stylesheet">
+  <title>Contact</title>
+</head>
+
+<body>
+  <div class="container">
+    <form onsubmit="sendEmail(); reset(); return false;">
+      <h3>Contact Me</h3>
+      <input type="text" placeholder="Your Name" id="name" required>
+      <input type="email" placeholder="Your Email" id="email" required>
+      <input type="text" placeholder="Phone no." id="phone">
+      <textarea id="message" rows="4" placeholder="Enter your message here" required></textarea>
+      <button type="submit" class="btn btn-primary btn-ghost btn-shine">Send</button>
+
+    </form>
+  </div>
+  <footer style="background-color: #222831">
+    <div class="social-icons">
+      <a href="https://github.com/AVG-DYN4MO" target="_blank">
+        <img class="social-icon" src="img/github.png" alt="GitHub">
+      </a>
+      <a href="https://www.linkedin.com/in/supriyaghosh2004/" target="_blank">
+        <img class="social-icon" src="img/linkedin2.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com/omg.itz.sg/" target="_blank">
+        <img class="social-icon" src="img/instagram1.png" alt="Instagram">
+      </a>
+    </div>
+    <p class="copyright">&copy; 2023 DYN4MO. All rights reserved.</p>
+  </footer>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script>
+    function sendEmail() {
+        const name = document.getElementById("name");
+        const email = document.getElementById("email");
+        const phone = document.getElementById("phone");
+        const subject = document.getElementById("message");
+
+        let ebody = `
+        <b> Name : </b> ${name.value}
+        <br/>
+        <b> Email : </b> ${email.value}
+        <br/>
+        <b> Phone : </b> ${phone.value}
+        <br/>
+        <b> Message : </b> ${message.value}
+        `
+        Email.send({
+            SecureToken : "84ab3dec-617f-4035-99a8-37fcc872e8f1",
+            To : "supriyaghosh.developer@gmail.com",
+            From : "supriyaghosh.developer@gmail.com",
+            Subject : "Enquiry|Portfolio",
+            Body : ebody
+        }).then(
+        message => alert("Message sent successfully!")
+        );
+    }
+  </script>
+</body>
+</html>
